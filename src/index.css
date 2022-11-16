@@ -1,13 +1,155 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+html{
+  font-size: 62.5%;/* 16px * 62.5 = 10pc = 1 rem*/
+  box-sizing: border-box; /*e mai usor sa lucram cu boxuri sai sa avem borders si margins*/
+}
+body{
+  margin: 0; /*scapam e marginul default*/
+  height: 100vh; /*inaltime maxima relativa la viewport, adica la fereastra deschisa*/
+  font-size: 1.6 rem;
+  font-family: Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+#root{ /*i want the div id root to be 100%*/
+  height: 100%;
+}
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/*Layout*/
+.grid-container{
+ display: grid;  /*pt ca e resposive and flexible*/
+ grid-template-areas: /*mai invat despre asta*/
+      'header'
+      'main'
+      'footer';
+  grid-template-columns: 1fr ;
+  grid-template-rows: 5rem 1fr 5rem; /*5 rem header si footer si 1fr  main*/
+  height: 100% ;
+}
+header{
+  grid-area: header;
+  background-color: #203040;
+}
+main{
+  grid-area: main;
+  padding: 1rem;
+}
+footer{
+  grid-area: footer;
+  background-color: #203040;
+  color: #ffffff;
+}
+/*Commen*//*...commen classes*/
+h1{
+  font-size: 1.8rem;
+  padding: 1rem 0;/*verticly to 1rem and horizontaly to 0*/
+}
+h2{
+  font-size: 1.6rem;
+  padding: 1rem 0;
+}
+a{
+  text-decoration: none; /*ca sa nu mai fie linkul subliniat*/
+}
+a:hover {
+  color: #ff8000; /*cand trec cu mouseul se face portocaliu*/
+}
+ul{
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+li{
+  margin-top:1rem;
+}
+button{
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 0.1rem #a4a4a4 solid;
+  font-size: 1.6 rem;
+  font-family: Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f8f8f8;
+  cursor: pointer;
+}
+button.hover{
+  border: 0.1rem #404040 solid;
+}
+button.primary{
+  background-color: #f0c040;
+}
+button.block{
+  background-color: 100%;
+}
+/*Header*/
+
+header a{ /*pentru linkurile din header*/
+  color: #ffffff; /*sa fie albe sa se vada pe albastru inchis*/
+  padding: 1rem;
+}
+a.brand{ /*pentru logo vreaualte chestii*/
+  color: #ffffff;/*textul ramane alb la hover*/
+  font-size: 3rem; /*fontul mai mare evident*/
+  font-weight: bold;/*si vreau sa fie si ingrosat*/
+}
+.row{/*Pun row ca clasa pentru header ca sa mearga.Vreau sa pun cart si sign in pe acelasi rand in dreapta iar in staga ramane numele bookstorului*/
+  display: flex; /*element will stay in row next to ech other*/
+  flex-wrap: wrap; /*to make rows responsive*/
+  justify-content: space-between; /*setez distanta maxima intre ele*/
+  align-items: center; /*elementele vor fi centrate vertical*/
+}
+.row.center{ /*center e subclasa lui row*/
+  justify-content: center; /*centreaza footerul*/
+}
+.row.top{
+  align-items: flex-start;
+}
+.col-1{
+  flex:1 1 25rem;
+}
+.col-2{
+  flex: 2 1 50rem;
+}
+/*image*/
+img{
+  border-radius: 0.5rem;
+}
+img.medium{
+  max-width: 19rem;
+  width: 100%;
+}
+img.large{
+  max-width: 29rem;
+  width: 100%;
+}
+/*card*/
+.card{
+  border: 0.1rem #c0c0c0 solid;
+  background-color: #f8f8f8;
+  border-radius: 0.5rem;
+  margin: 1rem;
+}
+.card-body{
+  padding: 1rem;
+}
+.card-body >*{/*all direct children of card body*/
+  margin-bottom: 0.5rem; /*space betwin items*/
+}
+.price{
+  font-size: 2rem;
+}
+/*rating (stars)*/
+.rating span{
+  color: #f0c040;/*fac stelutele aurii*/
+  margin: 0.1rem;
+}
+.rating span:last-child{/*adica pun proproietetea doar pe  ultimul copil, respectivscriu num reviews cu negru*/
+  color: #404040;
+}
+/*Alert*/
+.succes{
+  color: #20a020;
+}
+.error{
+  color: #a02020;
 }
